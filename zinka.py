@@ -7,10 +7,9 @@ from get_audio import get_audio
 from get_photo import get_photo
 from get_lessons import run
 
-Token = ''
-
-updater = Updater(token=Token, use_context=True)
-dispatcher = updater.dispatcher
+with open ('shooroombooroom') as f:
+    updater = Updater(token=f.readline()[:-1], use_context=True)
+    dispatcher = updater.dispatcher
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
