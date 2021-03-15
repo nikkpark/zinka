@@ -39,15 +39,17 @@ def audio(update, context):
         context.bot.send_message(
             chat_id=update.effective_chat.id,
             text='Определяю размер...')
-        file_path = get_audio(update.message.text)
+        (audio_title, file_path) = get_audio(update.message.text)
         print("Success.")
         context.bot.send_message(
             chat_id=update.effective_chat.id,
             text='Обработано. Загружаю...')
         for track in file_path:
+            print(audio_title)
             context.bot.send_audio(
                 chat_id=update.effective_chat.id,
-                audio=open(track, 'rb')
+                audio=open(track, 'rb'),
+                title=audio_title.split("_")[0]
             )
 
 def echo(update, context):

@@ -80,7 +80,7 @@ def get_audio (url: str) -> list:
             'outtmpl' :  '/home/nick/Downloads/tg_dump/%(title)s_%(id)s.%(format)s',
             'postprocessors' : [{
                 'key' : 'FFmpegExtractAudio',
-                'preferredcodec' : 'opus',
+                'preferredcodec' : 'm4a',
                 'preferredquality' : '192',
                 }],
             'logger' : MyLogger(),
@@ -105,5 +105,7 @@ def get_audio (url: str) -> list:
         file_path = cut_audio(file_path)
     else:
         file_path = [file_path]
+    
 
-    return file_path
+
+    return (filename, file_path)
